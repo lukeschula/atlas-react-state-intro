@@ -11,6 +11,12 @@ export default function SchoolCatalog() {
       .then((data) => setCourses(data));
   }, []);
 
+  const filteredCourses = courses.filter(
+    (course) =>
+      course.courseName.toLowerCase().startsWith(filter.toLowerCase()) ||
+      course.courseNumber.toLowerCase().startsWith(filter.toLowerCase())
+  );
+
   const handleSort = (field) => {
     const newOrder = sort == field && direction === "asc" ? "desc" : "asc";
     setSort(field);
