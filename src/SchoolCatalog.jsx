@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { useStae } from "react";
+import { useEffect } from "react";
+import { useState } from "react";
 
 export default function SchoolCatalog() {
   const [courses, setCourses] = useState([]);
