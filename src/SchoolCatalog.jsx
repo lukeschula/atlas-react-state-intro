@@ -1,13 +1,21 @@
 import { useEffect } from "react";
+import { useStae } from "react";
 
 export default function SchoolCatalog() {
   const [courses, setCourses] = useState([]);
+  const [filter, setFilter] = useState("");
 
   useEffect(() => {
     fetch("api/courses.json")
       .then((response) => response.json())
       .then((data) => setCourses(data));
   }, []);
+
+  const handleSort = (field) => {
+    const newOrder = sort == field && direction === "asc" ? "desc" : "asc";
+    setSort(field);
+    setDirection(newOrder);
+  };
 
   return (
     <div className="school-catalog">
