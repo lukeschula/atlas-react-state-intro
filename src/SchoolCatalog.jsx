@@ -23,10 +23,12 @@ export default function SchoolCatalog() {
     setDirection(newOrder);
   };
 
+  const
+
   return (
     <div className="school-catalog">
       <h1>School Catalog</h1>
-      <input type="text" placeholder="Search" />
+      <input type="text" placeholder="Search" onChange={(event) => setFilter(event.target.value)}/>
       <table>
         <thead>
           <tr>
