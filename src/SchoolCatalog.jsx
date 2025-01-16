@@ -6,6 +6,7 @@ export default function SchoolCatalog() {
   const [filter, setFilter] = useState("");
   const [sort, setSort] = useState("trimester");
   const [direction, setDirection] = useState("asc");
+  const [page, SetPage] = useState(1);
 
   useEffect(() => {
     fetch("api/courses.json")
