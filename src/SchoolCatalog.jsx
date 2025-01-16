@@ -25,9 +25,42 @@ export default function SchoolCatalog() {
     setDirection(newOrder);
   };
 
-  const sortedCourses = filteredCourses.sort((x, y) => {
-    let sort;
+  const sortedCourses = filteredCourses.sort((a, b) => {
+    let sortElement;
+
+    switch (sort) {
+      case "trimester":
+        sortElement =
+          (Number(a.trimester) - Number(b.trimester)) *
+          (direction === "desc" ? -1 : 1);
+        break;
+      case "course number":
+        sortElement =
+          a.courseNumber.localCompare(b.courseNumber) *
+          (direction === "desc" ? -1 : 1);
+        break;
+      case "course name":
+        sortElement =
+          a.courseName.localCompare(b.courseName) *
+          (direction === "desc" ? -1 : 1);
+        break;
+      case "semester credits":
+        sortElement =
+          (Number(a.semesterCredits) - Number(b.semesterCredits)) *
+          (direction === "desc" ? -1 : 1);
+        break;
+      case "total clock hours":
+        sortElement =
+          (Number(a.totalClockHours) -
+            SVGAnimatedNumberList(b.totalClockHours)) *
+          (direction === "desc" ? -1 : 1);
+        break;
+    }
+
+    return sortElement;
   });
+
+  const currentPage = sortedCourses.slice;
 
   return (
     <div className="school-catalog">
