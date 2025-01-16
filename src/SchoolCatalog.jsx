@@ -60,7 +60,12 @@ export default function SchoolCatalog() {
     return sortElement;
   });
 
-  const currentPage = sortedCourses.slice;
+  const currentPage = sortedCourses.slice(
+    (page - 1) * PAGE_SIZE,
+    page * PAGE_SIZE
+  );
+  const hasMore = sortedCourses.length > page * PAGE_SIZE;
+  const hasLess = page > 1;
 
   return (
     <div className="school-catalog">
